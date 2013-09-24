@@ -10,8 +10,15 @@ package no.ntnu.gps.statemanagers;
  */
 public class KQueensStateManager extends AbstractStateManager {
     private int k;
+    private int [][] board;
+    private int [][] constreints;
     public KQueensStateManager(int k) {
         this.k = k;
+        board = new int [k][k];
+        for (int i = 0; i < k; i++) {
+			board[0][i] = 1;
+		}
+        
     }
     
 }

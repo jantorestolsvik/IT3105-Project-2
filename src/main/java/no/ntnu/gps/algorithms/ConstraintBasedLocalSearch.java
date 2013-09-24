@@ -15,5 +15,6 @@ public abstract class ConstraintBasedLocalSearch {
     }
 
     public void solve() {
+    	
     }
 }
