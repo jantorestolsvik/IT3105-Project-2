@@ -1,12 +1,8 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package no.ntnu.gps.algorithms;
 
 /**
  *
- * @author Jani
+ * @author Jan Tore Stølsvik & Tom Glover 
  */
 public abstract class ConstraintBasedLocalSearch {
     

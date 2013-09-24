@@ -6,7 +6,7 @@ package no.ntnu.gps.statemanagers;
 
 /**
  *
- * @author Jani
+ * @author Jan Tore Stølsvik & Tom Glover 
  */
 public class KQueensStateManager extends AbstractStateManager {
     
