@@ -1,4 +1,4 @@
-package no.ntnu.gps;
+package no.ntnu.gps.main;
 
 public class App 
 {
