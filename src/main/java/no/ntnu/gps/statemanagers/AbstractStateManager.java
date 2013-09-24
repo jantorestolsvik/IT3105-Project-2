@@ -9,5 +9,8 @@ package no.ntnu.gps.statemanagers;
  * @author Jan Tore Stølsvik & Tom Glover 
  */
 public abstract class AbstractStateManager {
+    public void nextMinConflictState() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 
 }
