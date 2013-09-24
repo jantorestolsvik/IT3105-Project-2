@@ -8,6 +8,6 @@ package no.ntnu.gps.algorithms;
  *
  * @author Jani
  */
-public class SimulatedAnnealing extends ConstraintBasedLocalSearch {
+public abstract class SimulatedAnnealing extends ConstraintBasedLocalSearch {
     
 }
