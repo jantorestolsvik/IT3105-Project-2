@@ -11,4 +11,11 @@ public class KQueensMC extends MinConflicts {
     public KQueensMC(int k) {
         super(new KQueensStateManager(k));
     }
+
+    @Override
+    public String toString() {
+        return this.stateManager.toString();
+    }
+    
+    
 }

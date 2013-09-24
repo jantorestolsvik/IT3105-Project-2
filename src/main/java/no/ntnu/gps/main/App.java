@@ -12,7 +12,8 @@ public class App
 {
     public static void main( String[] args )
     {
-        ConstraintBasedLocalSearch temp = new KQueensMC(10);
+        ConstraintBasedLocalSearch temp = new KQueensMC(4);
         temp.solve();
+        System.out.println(temp.toString());
     }
 }
