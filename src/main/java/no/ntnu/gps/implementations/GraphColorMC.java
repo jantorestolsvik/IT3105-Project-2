@@ -2,6 +2,7 @@ package no.ntnu.gps.implementations;
 
 import no.ntnu.gps.algorithms.MinConflicts;
 import no.ntnu.gps.statemanagers.AbstractStateManager;
+import no.ntnu.gps.statemanagers.GraphColorStateManager;
 
 /**
  *
@@ -10,7 +11,7 @@ import no.ntnu.gps.statemanagers.AbstractStateManager;
 public class GraphColorMC extends MinConflicts {
 
     public GraphColorMC(AbstractStateManager stateManager) {
-        super(stateManager);
+        super(new GraphColorStateManager());
     }
     
 }
