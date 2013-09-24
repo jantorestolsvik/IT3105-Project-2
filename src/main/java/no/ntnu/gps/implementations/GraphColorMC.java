@@ -1,11 +1,16 @@
 package no.ntnu.gps.implementations;
 
 import no.ntnu.gps.algorithms.MinConflicts;
+import no.ntnu.gps.statemanagers.AbstractStateManager;
 
 /**
  *
  * @author Jan Tore Stølsvik & Tom Glover 
  */
 public class GraphColorMC extends MinConflicts {
+
+    public GraphColorMC(AbstractStateManager stateManager) {
+        super(stateManager);
+    }
     
 }

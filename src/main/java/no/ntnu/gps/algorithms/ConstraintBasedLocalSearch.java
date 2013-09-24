@@ -9,7 +9,11 @@ import no.ntnu.gps.statemanagers.AbstractStateManager;
  */
 public abstract class ConstraintBasedLocalSearch {
     protected AbstractStateManager stateManager;
+
+    public ConstraintBasedLocalSearch(AbstractStateManager stateManager) {
+        this.stateManager = stateManager;
+    }
+
     public void solve() {
     }
-    
 }
