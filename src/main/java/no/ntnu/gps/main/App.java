@@ -1,4 +1,9 @@
 package no.ntnu.gps.main;
+
+import no.ntnu.gps.algorithms.ConstraintBasedLocalSearch;
+import no.ntnu.gps.implementations.GraphColorMC;
+import no.ntnu.gps.implementations.KQueensMC;
+
 /**
  *
  * @author Jan Tore Stølsvik & Tom Glover 
@@ -7,6 +12,7 @@ public class App
 {
     public static void main( String[] args )
     {
-        System.out.println( "Hello World!" );
+        ConstraintBasedLocalSearch temp = new KQueensMC(10);
+        temp.solve();
     }
 }
