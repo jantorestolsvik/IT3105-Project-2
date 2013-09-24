@@ -9,5 +9,9 @@ package no.ntnu.gps.statemanagers;
  * @author Jani
  */
 public abstract class AbstractStateManager {
+    public int stuff = 0;
     
+    public void doStuff(){
+    	stuff++;
+    }
 }
