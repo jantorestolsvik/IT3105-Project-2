@@ -16,7 +16,6 @@ public abstract class MinConflicts extends ConstraintBasedLocalSearch {
     public void solve() {
         while(!stateManager.solved()) {
             stateManager.nextMinConflictState();
-            //System.out.println(stateManager.toString());
         }
     }
     
