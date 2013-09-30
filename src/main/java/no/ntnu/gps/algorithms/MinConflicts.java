@@ -1,6 +1,7 @@
 package no.ntnu.gps.algorithms;
 
 import no.ntnu.gps.statemanagers.AbstractStateManager;
+import no.ntnu.gps.states.AbstractState;
 
 /**
  *
@@ -13,10 +14,12 @@ public abstract class MinConflicts extends ConstraintBasedLocalSearch {
     }
     
     @Override
-    public void solve() {
-        while(!stateManager.solved()) {
-            stateManager.nextMinConflictState();
+    public AbstractState solve() {
+        AbstractState state = stateManager.getState();
+        while(!state.solved()) {
+            state = stateManager.nextMinConflictState();
         }
+        return state;
     }
     
 }

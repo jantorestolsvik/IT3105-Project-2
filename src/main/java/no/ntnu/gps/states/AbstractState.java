@@ -9,5 +9,7 @@ package no.ntnu.gps.states;
  * @author Jani
  */
 public abstract class AbstractState {
+
+    public abstract boolean solved();
     
 }

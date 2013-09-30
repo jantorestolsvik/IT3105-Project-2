@@ -2,6 +2,7 @@ package no.ntnu.gps.algorithms;
 
 import no.ntnu.gps.implementations.KQueensMC;
 import no.ntnu.gps.statemanagers.AbstractStateManager;
+import no.ntnu.gps.states.AbstractState;
 
 /**
  *
@@ -14,7 +15,5 @@ public abstract class ConstraintBasedLocalSearch {
         this.stateManager = stateManager;
     }
 
-    public void solve() {
-    	
-    }
+    public abstract AbstractState solve();
 }

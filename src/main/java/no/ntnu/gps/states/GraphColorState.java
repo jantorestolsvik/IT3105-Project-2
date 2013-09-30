@@ -9,5 +9,10 @@ package no.ntnu.gps.states;
  * @author Jani
  */
 public class GraphColorState extends AbstractState {
+
+    @Override
+    public boolean solved() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

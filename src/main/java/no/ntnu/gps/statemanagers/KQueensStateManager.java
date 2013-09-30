@@ -11,27 +11,23 @@ import no.ntnu.gps.states.KQueenState;
  */
 public class KQueensStateManager extends AbstractStateManager {
     KQueenState state;
+
+    @Override
+    public KQueenState getState() {
+        return state;
+    }
     
     public KQueensStateManager(int k) {
         this.state = new KQueenState(k);
     }
 
     @Override
-    public void nextMinConflictState() {
+    public AbstractState nextMinConflictState() {
         List<Integer> conflictedStates = state.conflictedStates();
         int chosenIndex = conflictedStates.get((int) (Math.random() * conflictedStates.size()));
         List<Integer> leastConflictedPositions = state.leastConflictedPositions(chosenIndex);
         int chosenPosition = leastConflictedPositions.get((int) (Math.random() * leastConflictedPositions.size()));
         state.moveQueen(chosenIndex, chosenPosition);
-    }
-
-    @Override
-    public boolean solved() {
-        return state.solved();
-    }
-
-    @Override
-    public String toString() {
-        return state.toString();
+        return this.state;
     }
 }
