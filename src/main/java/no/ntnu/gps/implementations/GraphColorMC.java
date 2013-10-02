@@ -10,8 +10,8 @@ import no.ntnu.gps.statemanagers.GraphColorStateManager;
  */
 public class GraphColorMC extends MinConflicts {
 
-    public GraphColorMC(String file) {
-        super(new GraphColorStateManager(file));
+    public GraphColorMC(String file, int K) {
+        super(new GraphColorStateManager(file, K));
     }
     
 }

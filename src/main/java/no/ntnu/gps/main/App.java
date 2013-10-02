@@ -13,7 +13,7 @@ public class App
 {
     public static void main( String[] args )
     {
-        ConstraintBasedLocalSearch temp = new GraphColorMC("graph.txt");
+        ConstraintBasedLocalSearch temp = new GraphColorMC("graph.txt", 4);
         AbstractState result = temp.solve();
         System.out.println(result.toString());
     }

@@ -1,5 +1,6 @@
 package no.ntnu.gps.statemanagers;
 
+import java.util.List;
 import no.ntnu.gps.states.AbstractState;
 import no.ntnu.gps.states.GraphColorState;
 
@@ -9,17 +10,22 @@ import no.ntnu.gps.states.GraphColorState;
  */
 public class GraphColorStateManager extends AbstractStateManager {
     GraphColorState state;
-    public GraphColorStateManager(String file) {
-        state = new GraphColorState(file);
+    public GraphColorStateManager(String file, int K) {
+        state = new GraphColorState(file, K);
     }
 
     @Override
     public AbstractState nextMinConflictState() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        List<Integer> conflictedStates = state.conflictedStates();
+        int chosenIndex = conflictedStates.get((int) (Math.random() * conflictedStates.size()));
+        List<Integer> leastConflictedPositions = state.leastConflictedPositions(chosenIndex);
+        int chosenPosition = leastConflictedPositions.get((int) (Math.random() * leastConflictedPositions.size()));
+        state.changeColor(chosenIndex, chosenPosition);
+        return this.state;
     }
 
     @Override
     public AbstractState getState() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return state;
     }
 }
