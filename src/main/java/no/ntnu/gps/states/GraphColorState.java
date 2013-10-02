@@ -50,24 +50,64 @@ public class GraphColorState extends AbstractState {
 
     @Override
     public boolean solved() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        for (int i = 0; i < edges.length; i++) {
+            if (color[edges[i][0]]==color[edges[i][1]]) {
+                return false;
+            }
+        }
+        return true;
     }
 
     public List<Integer> conflictedStates() {
         List<Integer> list = new ArrayList<Integer>();
         for (int i = 0; i < edges.length; i++) {
             if (color[edges[i][0]] == color[edges[i][1]]) {
-                list.add(i);
+                list.add(edges[i][0]);
+                list.add(edges[i][1]);
             }
         }
         return list;
     }
 
-    public List<Integer> leastConflictedPositions(int chosenIndex) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List<Integer> leastConflictedColors(int chosenIndex) {
+        List<Integer> list = new ArrayList<Integer>();
+        int min = Integer.MAX_VALUE;
+        int [] tempConflicts = new int[K];
+        for (int i = 0; i < edges.length; i++) {
+            if ((edges[i][0]==chosenIndex)) {
+                tempConflicts[color[edges[i][1]]]++;
+            } else if (edges[i][1]==chosenIndex) {
+                tempConflicts[color[edges[i][0]]]++;
+            }
+        }
+        for (int i = 0; i < K; i++) {
+            if (tempConflicts[i] < min) {
+                min = tempConflicts[i];
+            }
+        }
+        for (int i = 0; i < K; i++) {
+            if(tempConflicts[i] == min) {
+                list.add(i);
+            }
+        }
+        if (list.contains(color[chosenIndex])&&(list.size()!=1)) {
+            list.remove(list.indexOf(color[chosenIndex]));
+        }
+        return list;
     }
 
-    public void changeColor(int chosenIndex, int chosenPosition) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void changeColor(int chosenIndex, int chosenColor) {
+        color[chosenIndex] = chosenColor;
     }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < edges.length; i++) {
+            sb.append(color[edges[i][0]] + "," + color[edges[i][1]] + "\n");
+        }
+        return sb.toString();
+    }
+    
+    
 }

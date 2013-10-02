@@ -18,9 +18,9 @@ public class GraphColorStateManager extends AbstractStateManager {
     public AbstractState nextMinConflictState() {
         List<Integer> conflictedStates = state.conflictedStates();
         int chosenIndex = conflictedStates.get((int) (Math.random() * conflictedStates.size()));
-        List<Integer> leastConflictedPositions = state.leastConflictedPositions(chosenIndex);
-        int chosenPosition = leastConflictedPositions.get((int) (Math.random() * leastConflictedPositions.size()));
-        state.changeColor(chosenIndex, chosenPosition);
+        List<Integer> leastConflictedColors = state.leastConflictedColors(chosenIndex);
+        int chosenColor = leastConflictedColors.get((int) (Math.random() * leastConflictedColors.size()));
+        state.changeColor(chosenIndex, chosenColor);
         return this.state;
     }
 
