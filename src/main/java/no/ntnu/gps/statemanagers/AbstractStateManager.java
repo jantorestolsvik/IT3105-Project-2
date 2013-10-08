@@ -9,5 +9,8 @@ import no.ntnu.gps.states.AbstractState;
 public abstract class AbstractStateManager {
     public abstract AbstractState nextMinConflictState();
     public abstract AbstractState getState();
+    public abstract AbstractState getRandomNeighboorState();
+    public abstract AbstractState getRandomStartState();
+    
     
 }

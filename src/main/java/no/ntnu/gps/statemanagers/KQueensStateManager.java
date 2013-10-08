@@ -30,4 +30,20 @@ public class KQueensStateManager extends AbstractStateManager {
         state.moveQueen(chosenIndex, chosenPosition);
         return this.state;
     }
+
+	@Override
+	public AbstractState getRandomNeighboorState() {
+		
+		return state.randomNeighbourState();
+	}
+
+	@Override
+	public AbstractState getRandomStartState() {
+		KQueenState randomState = state.randomNeighbourState();
+		for (int i = 0; i < 100; i++) {
+			randomState = randomState.randomNeighbourState();
+		}
+		return randomState;
+	}
+	
 }

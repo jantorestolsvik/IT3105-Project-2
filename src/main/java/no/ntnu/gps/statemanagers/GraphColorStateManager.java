@@ -28,4 +28,18 @@ public class GraphColorStateManager extends AbstractStateManager {
     public AbstractState getState() {
         return state;
     }
+
+	@Override
+	public AbstractState getRandomNeighboorState() {
+		// TODO NOT YET IMPLEMENTED
+		System.out.println("get your stuff togheter, your not supposed to use this method yet.");
+		return state;
+	}
+
+	@Override
+	public AbstractState getRandomStartState() {
+		// TODO Auto-generated method stub
+		System.out.println("get your stuff togheter, your not supposed to use this method yet.");
+		return state;
+	}
 }
