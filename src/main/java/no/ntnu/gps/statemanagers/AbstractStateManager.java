@@ -11,6 +11,6 @@ public abstract class AbstractStateManager {
     public abstract AbstractState getState();
     public abstract AbstractState getRandomNeighboorState();
     public abstract AbstractState getRandomStartState();
-    
+    public abstract int getEvalutation();
     
 }

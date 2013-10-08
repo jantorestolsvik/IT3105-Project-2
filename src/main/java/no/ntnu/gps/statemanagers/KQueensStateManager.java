@@ -33,7 +33,6 @@ public class KQueensStateManager extends AbstractStateManager {
 
 	@Override
 	public AbstractState getRandomNeighboorState() {
-		
 		return state.randomNeighbourState();
 	}
 
@@ -43,7 +42,18 @@ public class KQueensStateManager extends AbstractStateManager {
 		for (int i = 0; i < 100; i++) {
 			randomState = randomState.randomNeighbourState();
 		}
+		state = randomState;
 		return randomState;
 	}
+
+	@Override
+	public int getEvalutation() {
+		int val=0;
+		for (int i = 0; i < state.getConflicts().length; i++) {
+			val+=state.getConflicts()[i];
+		}
+		return val;
+	}
+	
 	
 }

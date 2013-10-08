@@ -28,7 +28,7 @@ public class KQueenState extends AbstractState {
     
     public KQueenState randomNeighbourState(){
 //    	try {
-			KQueenState returner = this;
+			KQueenState returner = this.clone();
     	int queen = (int) (Math.random()*k);
     	int pos = (int) (Math.random()*k);
     	
@@ -39,6 +39,15 @@ public class KQueenState extends AbstractState {
 //    		e.printStackTrace();
 //    		return null;
     			
+    }
+    public KQueenState clone(){
+    	KQueenState returner = new KQueenState(k);
+    	returner.conflicts = this.conflicts.clone();
+    	returner.queens = this.queens.clone();
+    	returner.k = this.k;
+//    	System.out.println(returner);
+//    	System.out.println(this);
+    	return returner;
     }
     
     public boolean solved() {
@@ -136,4 +145,8 @@ public class KQueenState extends AbstractState {
         }
         return sb.toString();
     }
+
+	public int[] getConflicts() {
+		return conflicts;
+	}
 }

@@ -42,4 +42,11 @@ public class GraphColorStateManager extends AbstractStateManager {
 		System.out.println("get your stuff togheter, your not supposed to use this method yet.");
 		return state;
 	}
+
+	@Override
+	public int getEvalutation() {
+		
+		System.out.println("get your stuff togheter, your not supposed to use this method yet.");
+		return 0;
+	}
 }
