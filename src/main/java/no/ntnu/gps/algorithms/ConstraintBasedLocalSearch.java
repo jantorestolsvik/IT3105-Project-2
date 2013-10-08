@@ -1,6 +1,5 @@
 package no.ntnu.gps.algorithms;
 
-import no.ntnu.gps.implementations.KQueensMC;
 import no.ntnu.gps.statemanagers.AbstractStateManager;
 import no.ntnu.gps.states.AbstractState;
 

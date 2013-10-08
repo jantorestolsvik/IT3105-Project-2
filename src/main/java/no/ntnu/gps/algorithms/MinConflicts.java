@@ -7,7 +7,7 @@ import no.ntnu.gps.states.AbstractState;
  *
  * @author Jan Tore Stølsvik & Tom Glover 
  */
-public abstract class MinConflicts extends ConstraintBasedLocalSearch {
+public class MinConflicts extends ConstraintBasedLocalSearch {
 
     public MinConflicts(AbstractStateManager stateManager) {
         super(stateManager);
