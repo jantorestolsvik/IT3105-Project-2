@@ -214,4 +214,10 @@ public class GraphColorState extends AbstractState {
          frame.pack();
          frame.setVisible(true);
     }
+
+	@Override
+	public int evaluation() {
+		System.out.println("not in use");
+		return 0;
+	}
 }

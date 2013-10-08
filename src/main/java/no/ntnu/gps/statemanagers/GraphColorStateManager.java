@@ -1,5 +1,6 @@
 package no.ntnu.gps.statemanagers;
 
+import java.util.ArrayList;
 import java.util.List;
 import no.ntnu.gps.states.AbstractState;
 import no.ntnu.gps.states.GraphColorState;
@@ -29,12 +30,6 @@ public class GraphColorStateManager extends AbstractStateManager {
         return state;
     }
 
-	@Override
-	public AbstractState getRandomNeighboorState() {
-		// TODO NOT YET IMPLEMENTED
-		System.out.println("get your stuff togheter, your not supposed to use this method yet.");
-		return state;
-	}
 
 	@Override
 	public AbstractState getRandomStartState() {
@@ -43,10 +38,11 @@ public class GraphColorStateManager extends AbstractStateManager {
 		return state;
 	}
 
+
 	@Override
-	public int getEvalutation() {
-		
+	public ArrayList<AbstractState> getRandomNeighboorStates(int nr) {
+		// TODO Auto-generated method stub
 		System.out.println("get your stuff togheter, your not supposed to use this method yet.");
-		return 0;
+		return null;
 	}
 }

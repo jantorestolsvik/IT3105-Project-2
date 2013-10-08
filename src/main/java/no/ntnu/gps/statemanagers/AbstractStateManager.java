@@ -1,5 +1,7 @@
 package no.ntnu.gps.statemanagers;
 
+import java.util.ArrayList;
+
 import no.ntnu.gps.states.AbstractState;
 
 /**
@@ -9,8 +11,7 @@ import no.ntnu.gps.states.AbstractState;
 public abstract class AbstractStateManager {
     public abstract AbstractState nextMinConflictState();
     public abstract AbstractState getState();
-    public abstract AbstractState getRandomNeighboorState();
+    public abstract ArrayList<AbstractState> getRandomNeighboorStates(int nr);
     public abstract AbstractState getRandomStartState();
-    public abstract int getEvalutation();
     
 }

@@ -11,5 +11,6 @@ package no.ntnu.gps.states;
 public abstract class AbstractState {
 
     public abstract boolean solved();
+    public abstract int evaluation();
     
 }

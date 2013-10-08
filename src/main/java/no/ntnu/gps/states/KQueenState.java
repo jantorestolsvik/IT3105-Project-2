@@ -149,4 +149,13 @@ public class KQueenState extends AbstractState {
 	public int[] getConflicts() {
 		return conflicts;
 	}
+
+	@Override
+	public int evaluation() {
+		int val=0;
+		for (int i = 0; i < this.getConflicts().length; i++) {
+			val+=this.getConflicts()[i];
+		}
+		return val;
+	}
 }
