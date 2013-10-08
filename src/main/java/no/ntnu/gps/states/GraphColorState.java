@@ -85,6 +85,14 @@ public class GraphColorState extends AbstractState {
         }
     }
 
+    private GraphColorState(int [] colorClone, int [][] edges, double [][] coordinates, Color [] colors, int K) {
+        this.color = colorClone;
+        this.edges = edges;
+        this.coordinates = coordinates;
+        this.colors = colors;
+        this.K = K;
+    }
+
     @Override
     public boolean solved() {
         for (int i = 0; i < edges.length; i++) {
@@ -215,9 +223,30 @@ public class GraphColorState extends AbstractState {
          frame.setVisible(true);
     }
 
-	@Override
-	public int evaluation() {
-		System.out.println("not in use");
-		return 0;
-	}
+    @Override
+    public int evaluation() {
+        int eval = 0;
+        for (int i = 0; i < edges.length; i++) {
+            if (color[edges[i][0]] == color[edges[i][1]]) {
+                eval++;
+            }
+        }
+        return eval;
+    }
+
+    public AbstractState randomNeighbourState() {
+        GraphColorState returner = this.clone();
+    	int color = (int) (Math.random()*K);
+    	int node = (int) (Math.random()*this.color.length);
+    	
+    	returner.changeColor(node, color);
+    	
+    	return returner;
+    }
+    
+    public GraphColorState clone(){
+        int [] colorClone = color.clone();
+    	GraphColorState returner = new GraphColorState(colorClone, edges, coordinates, colors, K);
+    	return returner;
+    }
 }

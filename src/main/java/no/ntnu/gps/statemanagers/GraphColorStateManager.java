@@ -33,16 +33,16 @@ public class GraphColorStateManager extends AbstractStateManager {
 
 	@Override
 	public AbstractState getRandomStartState() {
-		// TODO Auto-generated method stub
-		System.out.println("get your stuff togheter, your not supposed to use this method yet.");
-		return state;
+            return state;
 	}
 
 
 	@Override
 	public ArrayList<AbstractState> getRandomNeighboorStates(int nr) {
-		// TODO Auto-generated method stub
-		System.out.println("get your stuff togheter, your not supposed to use this method yet.");
-		return null;
+                ArrayList<AbstractState> returner = new ArrayList<AbstractState>();
+		for (int i = 0; i < nr; i++) {
+			returner.add(state.randomNeighbourState());
+		}
+		return returner;
 	}
 }
