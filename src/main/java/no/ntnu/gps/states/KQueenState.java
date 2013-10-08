@@ -156,6 +156,7 @@ public class KQueenState extends AbstractState {
 		for (int i = 0; i < this.getConflicts().length; i++) {
 			val+=this.getConflicts()[i];
 		}
+		val = conflicts.length*conflicts.length - val;
 		return val;
 	}
 }

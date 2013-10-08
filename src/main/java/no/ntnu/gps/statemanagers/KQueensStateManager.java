@@ -51,5 +51,11 @@ public class KQueensStateManager extends AbstractStateManager {
 		return returner;
 	}
 
+	@Override
+	public void setState(AbstractState state) {
+		this.state = (KQueenState) state;
+		
+	}
+
 
 }

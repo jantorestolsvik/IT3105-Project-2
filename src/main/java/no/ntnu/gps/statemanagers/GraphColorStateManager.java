@@ -45,4 +45,11 @@ public class GraphColorStateManager extends AbstractStateManager {
 		}
 		return returner;
 	}
+
+	@Override
+	public void setState(AbstractState state) {
+		this.state = (GraphColorState) state;
+		
+	}
+
 }

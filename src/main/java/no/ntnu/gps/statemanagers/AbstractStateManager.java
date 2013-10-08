@@ -11,6 +11,7 @@ import no.ntnu.gps.states.AbstractState;
 public abstract class AbstractStateManager {
     public abstract AbstractState nextMinConflictState();
     public abstract AbstractState getState();
+    public abstract void setState(AbstractState state);
     public abstract ArrayList<AbstractState> getRandomNeighboorStates(int nr);
     public abstract AbstractState getRandomStartState();
     
