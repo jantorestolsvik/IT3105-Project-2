@@ -15,7 +15,7 @@ public class App
     {
 //        ConstraintBasedLocalSearch temp = new GraphColorMC("graph.txt", 4);
         //ConstraintBasedLocalSearch temp = new SimulatedAnnealing(new GraphColorStateManager("graph.txt", 4));
-        ConstraintBasedLocalSearch temp = new SimulatedAnnealing(new KQueensStateManager(100));
+        ConstraintBasedLocalSearch temp = new SimulatedAnnealing(new KQueensStateManager(10));
         AbstractState result = temp.solve();
         System.out.println(result);
         //GraphColorState result2 = (GraphColorState)result;

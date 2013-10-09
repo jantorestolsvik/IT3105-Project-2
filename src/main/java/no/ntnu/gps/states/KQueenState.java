@@ -29,13 +29,12 @@ public class KQueenState extends AbstractState {
     public KQueenState randomNeighbourState(){
 //    	try {
         KQueenState returner = this.clone();
-        
-        for (int i = 0; i < Math.max(1, (int)(k*0.3)); i++) {
-            
+        int queen = (int) (Math.random()*k);
+        int pos = (int) (Math.random()*k);
+        while(queens[queen] == pos) {
+            pos = (int) (Math.random()*k);
         }
-    	returner.moveQueen((int) (Math.random()*k),(int) (Math.random()*k));
-        returner.moveQueen((int) (Math.random()*k),(int) (Math.random()*k));
-        returner.moveQueen((int) (Math.random()*k),(int) (Math.random()*k));
+        returner.moveQueen(queen, pos);
     	
     	return returner;
 //    	} catch (CloneNotSupportedException e) {
