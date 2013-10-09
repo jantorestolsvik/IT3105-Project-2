@@ -32,10 +32,10 @@ public class SimulatedAnnealing extends ConstraintBasedLocalSearch {
 				}
 			}
 			double q = ((double)bestNeightbour.evaluation() - (double)stateManager.getState().evaluation() )/(double)stateManager.getState().evaluation();
-			System.out.println(q + " wat");
+			System.out.println("Q:"+q);
 			System.out.println(("("+  bestNeightbour.evaluation()) + " - " + stateManager.getState().evaluation()+ ")/" + stateManager.getState().evaluation());
 			double p = Math.exp(-q/(double)tempreture);
-			System.out.println(p);
+			System.out.println("P:"+p);
 			if(p>1){
 				p=1;
 			}
@@ -48,7 +48,7 @@ public class SimulatedAnnealing extends ConstraintBasedLocalSearch {
 			}
 				
 			tempreture /=1.1;
-			System.out.println(tempreture + "temp");
+			System.out.println("T:"+tempreture);
 			maxIterations--;
 		}
 		//		System.out.println(bestNeightbour);

@@ -28,11 +28,14 @@ public class KQueenState extends AbstractState {
     
     public KQueenState randomNeighbourState(){
 //    	try {
-			KQueenState returner = this.clone();
-    	int queen = (int) (Math.random()*k);
-    	int pos = (int) (Math.random()*k);
-    	
-    	returner.moveQueen(queen, pos);
+        KQueenState returner = this.clone();
+        
+        for (int i = 0; i < Math.max(1, (int)(k*0.3)); i++) {
+            
+        }
+    	returner.moveQueen((int) (Math.random()*k),(int) (Math.random()*k));
+        returner.moveQueen((int) (Math.random()*k),(int) (Math.random()*k));
+        returner.moveQueen((int) (Math.random()*k),(int) (Math.random()*k));
     	
     	return returner;
 //    	} catch (CloneNotSupportedException e) {
@@ -152,15 +155,23 @@ public class KQueenState extends AbstractState {
 
 	@Override
 	public int evaluation() {
-		int val=0;
-		for (int i = 0; i < this.getConflicts().length; i++) {
-                    if (this.getConflicts()[i] != 0) {
-                        val++;
+            int eval = 0;
+            int evalMax = 0;
+            for (int i = 0; i < k; i++) {
+                for (int j = i+1; j < k; j++) {
+                    if (queens[i]==queens[j]) {
+                        eval++;
                     }
-                    
-                    //val+=this.getConflicts()[i];
-		}
-		val = conflicts.length - val;
-		return val;
+                    int offsetPos = Math.abs(j-i);
+                    if (queens[i]==queens[j]+offsetPos) {
+                        eval++;
+                    }
+                    if (queens[i]==queens[j]-offsetPos) {
+                        eval++;
+                    }
+                    evalMax++;
+                }
+            }
+            return evalMax - eval;
 	}
 }
