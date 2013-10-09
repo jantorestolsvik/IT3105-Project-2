@@ -227,7 +227,7 @@ public class GraphColorState extends AbstractState {
     public int evaluation() {
         int eval = 0;
         for (int i = 0; i < edges.length; i++) {
-            if (color[edges[i][0]] == color[edges[i][1]]) {
+            if (color[edges[i][0]] != color[edges[i][1]]) {
                 eval++;
             }
         }
