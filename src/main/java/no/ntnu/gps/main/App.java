@@ -13,12 +13,20 @@ public class App
 {
     public static void main( String[] args )
     {
+    	int nrOfRuns = 100;
+    	int nrOfSolved = 0;
 //        ConstraintBasedLocalSearch temp = new GraphColorMC("graph.txt", 4);
-        ConstraintBasedLocalSearch temp = new SimulatedAnnealing(new GraphColorStateManager("graph.txt", 4));
+    	for (int i = 0; i < nrOfRuns; i++) {
+    		ConstraintBasedLocalSearch temp = new SimulatedAnnealing(new KQueensStateManager(10));
+    		AbstractState result = temp.solve();
+			if(result.solved()){
+				nrOfSolved++;
+			}
+		}
+    	System.out.println(nrOfSolved + "/" + nrOfRuns);
         //ConstraintBasedLocalSearch temp = new SimulatedAnnealing(new KQueensStateManager(10));
-        AbstractState result = temp.solve();
         //System.out.println(result);
-        GraphColorState result2 = (GraphColorState)result;
-        result2.display();
+//        GraphColorState result2 = (GraphColorState)result;
+//        result2.display();
     }
 }
