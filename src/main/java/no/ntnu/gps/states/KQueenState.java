@@ -28,15 +28,21 @@ public class KQueenState extends AbstractState {
     
     public KQueenState randomNeighbourState(){
 //    	try {
+//        KQueenState returner = this.clone();
+//        int queen = (int) (Math.random()*k);
+//        int pos = (int) (Math.random()*k);
+//        while(queens[queen] == pos) {
+//            pos = (int) (Math.random()*k);
+//        }
+//        returner.moveQueen(queen, pos);
+//    	
+//    	return returner;
         KQueenState returner = this.clone();
-        int queen = (int) (Math.random()*k);
-        int pos = (int) (Math.random()*k);
-        while(queens[queen] == pos) {
-            pos = (int) (Math.random()*k);
-        }
-        returner.moveQueen(queen, pos);
-    	
-    	return returner;
+        for (int i = 0; i < k; i++) {
+            int pos = (int) (Math.random()*k);        
+            returner.moveQueen(i, pos);
+        }      
+        return returner;
 //    	} catch (CloneNotSupportedException e) {
 //    		e.printStackTrace();
 //    		return null;
