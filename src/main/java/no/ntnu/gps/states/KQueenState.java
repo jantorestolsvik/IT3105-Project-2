@@ -160,6 +160,9 @@ public class KQueenState extends AbstractState {
 
 	@Override
 	public int evaluation() {
+		if (this.solved()){
+			return Integer.MAX_VALUE;
+		}
             int eval = 0;
             int evalMax = 0;
             for (int i = 0; i < k; i++) {
