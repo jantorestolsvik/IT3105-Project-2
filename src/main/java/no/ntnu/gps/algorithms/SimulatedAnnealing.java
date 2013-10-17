@@ -10,7 +10,7 @@ import no.ntnu.gps.states.AbstractState;
  * @author Jan Tore Stølsvik & Tom Glover 
  */
 public class SimulatedAnnealing extends ConstraintBasedLocalSearch {
-	protected double tempreture = 10;
+	protected double tempreture = 100;
 	protected int nrOfNeigboors = 40;
 	protected int time= 0;
 	protected int maxIterations = 100000;
@@ -36,8 +36,8 @@ public class SimulatedAnnealing extends ConstraintBasedLocalSearch {
 			System.out.println(("("+  bestNeightbour.evaluation()) + " - " + stateManager.getState().evaluation()+ ")/" + stateManager.getState().evaluation());
 			double p = Math.exp(-q/(double)tempreture);
 			System.out.println("P:"+p);
-			if(p>1.0){
-				p=1.0;
+			if(p>1){
+				p=1;
 			}
 			if(Math.random()>p){
 				this.stateManager.setState(bestNeightbour);
@@ -48,14 +48,14 @@ public class SimulatedAnnealing extends ConstraintBasedLocalSearch {
 				state = bestNeightbour;
 			}
 				
-			tempreture /=1.00001;
+			tempreture /=1.001;
 			System.out.println("T:"+tempreture);
 			maxIterations--;
 		}
 		//		System.out.println(bestNeightbour);
 		//		System.out.println("LINE");
 		//		System.out.println(stateManager.getState());
-System.out.println(state.evaluation() + " last state eval");
+//System.out.println(state.evaluation() + " last state eval");
 		return state;
 	}
 

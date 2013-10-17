@@ -17,7 +17,7 @@ public class App
     	int nrOfSolved = 0;
 //        ConstraintBasedLocalSearch temp = new GraphColorMC("graph.txt", 4);
     	for (int i = 0; i < nrOfRuns; i++) {
-    		ConstraintBasedLocalSearch temp = new SimulatedAnnealing(new KQueensStateManager(10));
+    		ConstraintBasedLocalSearch temp = new SimulatedAnnealing(new GraphColorStateManager("graph4.txt", 4));
     		AbstractState result = temp.solve();
 			if(result.solved()){
 				nrOfSolved++;
