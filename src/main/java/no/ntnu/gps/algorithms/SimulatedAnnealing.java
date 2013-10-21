@@ -2,7 +2,7 @@ package no.ntnu.gps.algorithms;
 
 import java.util.ArrayList;
 
-import no.ntnu.gps.statemanagers.AbstractStateManager;
+import no.ntnu.gps.statemanagers.StateManager;
 import no.ntnu.gps.states.AbstractState;
 
 /**
@@ -19,7 +19,7 @@ public class SimulatedAnnealing extends ConstraintBasedLocalSearch {
 
 	@Override
 	public AbstractState solve() {
-		AbstractState state = stateManager.getRandomStartState();
+		AbstractState state = stateManager.getState();
 		while(!state.solved()&&maxIterations>=0) {
 			neighboors = stateManager.getRandomNeighboorStates(nrOfNeigboors);
 			for (int i = 0; i < nrOfNeigboors; i++) {
@@ -32,10 +32,7 @@ public class SimulatedAnnealing extends ConstraintBasedLocalSearch {
 				}
 			}
 			double q = ((double)bestNeightbour.evaluation() - (double)stateManager.getState().evaluation() )/(double)stateManager.getState().evaluation();
-			System.out.println("Q:"+q);
-			System.out.println(("("+  bestNeightbour.evaluation()) + " - " + stateManager.getState().evaluation()+ ")/" + stateManager.getState().evaluation());
 			double p = Math.exp(-q/(double)tempreture);
-			System.out.println("P:"+p);
 			if(p>1){
 				p=1;
 			}
@@ -44,22 +41,16 @@ public class SimulatedAnnealing extends ConstraintBasedLocalSearch {
 				state = bestNeightbour;
 			}else{
 				this.stateManager.setState(neighboors.get((int)(Math.random()*20)));
-//				this.stateManager.getRandomStartState();
 				state = bestNeightbour;
 			}
 				
 			tempreture /=1.001;
-			System.out.println("T:"+tempreture);
 			maxIterations--;
 		}
-		//		System.out.println(bestNeightbour);
-		//		System.out.println("LINE");
-		//		System.out.println(stateManager.getState());
-//System.out.println(state.evaluation() + " last state eval");
 		return state;
 	}
 
-	public SimulatedAnnealing(AbstractStateManager stateManager) {
+	public SimulatedAnnealing(StateManager stateManager) {
 		super(stateManager);
 	}
 

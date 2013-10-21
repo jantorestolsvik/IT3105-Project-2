@@ -1,6 +1,6 @@
 package no.ntnu.gps.algorithms;
 
-import no.ntnu.gps.statemanagers.AbstractStateManager;
+import no.ntnu.gps.statemanagers.StateManager;
 import no.ntnu.gps.states.AbstractState;
 
 /**
@@ -8,9 +8,9 @@ import no.ntnu.gps.states.AbstractState;
  * @author Jan Tore Stølsvik & Tom Glover 
  */
 public abstract class ConstraintBasedLocalSearch {
-    protected AbstractStateManager stateManager;
+    protected StateManager stateManager;
 
-    public ConstraintBasedLocalSearch(AbstractStateManager stateManager) {
+    public ConstraintBasedLocalSearch(StateManager stateManager) {
         this.stateManager = stateManager;
     }
 

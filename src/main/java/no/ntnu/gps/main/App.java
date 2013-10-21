@@ -1,8 +1,8 @@
 package no.ntnu.gps.main;
 
+import java.util.Scanner;
 import no.ntnu.gps.algorithms.*;
-import no.ntnu.gps.statemanagers.GraphColorStateManager;
-import no.ntnu.gps.statemanagers.KQueensStateManager;
+import no.ntnu.gps.statemanagers.StateManager;
 import no.ntnu.gps.states.*;
 
 /**
@@ -13,20 +13,57 @@ public class App
 {
     public static void main( String[] args )
     {
-    	int nrOfRuns = 100;
+    	int nrOfRuns = 1;
     	int nrOfSolved = 0;
-//        ConstraintBasedLocalSearch temp = new GraphColorMC("graph.txt", 4);
-    	for (int i = 0; i < nrOfRuns; i++) {
-    		ConstraintBasedLocalSearch temp = new SimulatedAnnealing(new GraphColorStateManager("graph4.txt", 4));
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Which puzzle do you want to solve?");
+        System.out.println("1:Kqueens");
+        System.out.println("2:GraphColor");
+        System.out.println("3:Futoshiki");
+        AbstractState state;
+        switch(scanner.nextInt()) {
+            case 1:
+                System.out.println("How many queens?");
+                state = new KQueenState(scanner.nextInt());
+                break;
+            case 2:
+                System.out.println("Which file? 1, 2 or 3");
+                state = new GraphColorState("graph" + scanner.nextInt() + ".txt", 4);
+                break;
+            default:
+                throw new UnknownError("No such input");
+        }
+        StateManager stateManager = new StateManager(state);
+        System.out.println("Which algorithm do you which to use?");
+        System.out.println("1:MinConflicts");
+        System.out.println("2:SimulatedAnnealing");
+        ConstraintBasedLocalSearch localSearch;
+        switch(scanner.nextInt()) {
+            case 1:
+                localSearch = new MinConflicts(stateManager);
+                break;
+            case 2:
+                localSearch = new SimulatedAnnealing(stateManager);
+                break;
+            default:
+                throw new UnknownError("No such input");
+        }
+        
+        AbstractState result = localSearch.solve();
+        result.display();
+        if (result.solved()) {
+            System.out.println("Solved!");
+        } else {
+            System.out.println("Not solved!");
+        }
+       
+    	/*for (int i = 0; i < nrOfRuns; i++) {
+    		ConstraintBasedLocalSearch temp = new MinConflicts(new StateManager(new KQueenState(100)));
     		AbstractState result = temp.solve();
 			if(result.solved()){
 				nrOfSolved++;
 			}
 		}
-    	System.out.println(nrOfSolved + "/" + nrOfRuns);
-        //ConstraintBasedLocalSearch temp = new SimulatedAnnealing(new KQueensStateManager(10));
-        //System.out.println(result);
-//        GraphColorState result2 = (GraphColorState)result;
-//        result2.display();
+    	System.out.println(nrOfSolved + "/" + nrOfRuns);*/
     }
 }

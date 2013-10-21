@@ -1,6 +1,6 @@
 package no.ntnu.gps.algorithms;
 
-import no.ntnu.gps.statemanagers.AbstractStateManager;
+import no.ntnu.gps.statemanagers.StateManager;
 import no.ntnu.gps.states.AbstractState;
 
 /**
@@ -9,7 +9,7 @@ import no.ntnu.gps.states.AbstractState;
  */
 public class MinConflicts extends ConstraintBasedLocalSearch {
 
-    public MinConflicts(AbstractStateManager stateManager) {
+    public MinConflicts(StateManager stateManager) {
         super(stateManager);
     }
     

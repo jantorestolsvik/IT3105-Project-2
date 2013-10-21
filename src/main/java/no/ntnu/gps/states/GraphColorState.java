@@ -114,37 +114,6 @@ public class GraphColorState extends AbstractState {
         return list;
     }
 
-    public List<Integer> leastConflictedColors(int chosenIndex) {
-        List<Integer> list = new ArrayList<Integer>();
-        int min = Integer.MAX_VALUE;
-        int [] tempConflicts = new int[K];
-        for (int i = 0; i < edges.length; i++) {
-            if ((edges[i][0]==chosenIndex)) {
-                tempConflicts[color[edges[i][1]]]++;
-            } else if (edges[i][1]==chosenIndex) {
-                tempConflicts[color[edges[i][0]]]++;
-            }
-        }
-        for (int i = 0; i < K; i++) {
-            if (tempConflicts[i] < min) {
-                min = tempConflicts[i];
-            }
-        }
-        for (int i = 0; i < K; i++) {
-            if(tempConflicts[i] == min) {
-                list.add(i);
-            }
-        }
-        if (list.contains(color[chosenIndex])&&(list.size()!=1)) {
-            list.remove(list.indexOf(color[chosenIndex]));
-        }
-        return list;
-    }
-
-    public void changeColor(int chosenIndex, int chosenColor) {
-        color[chosenIndex] = chosenColor;
-    }
-
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -239,7 +208,7 @@ public class GraphColorState extends AbstractState {
     	int color = (int) (Math.random()*K);
     	int node = (int) (Math.random()*this.color.length);
     	
-    	returner.changeColor(node, color);
+    	returner.change(node, color);
     	
     	return returner;
     }
@@ -248,5 +217,38 @@ public class GraphColorState extends AbstractState {
         int [] colorClone = color.clone();
     	GraphColorState returner = new GraphColorState(colorClone, edges, coordinates, colors, K);
     	return returner;
+    }
+
+    @Override
+    public List<Integer> leastConflictedNeighbours(int chosenIndex) {
+         List<Integer> list = new ArrayList<Integer>();
+        int min = Integer.MAX_VALUE;
+        int [] tempConflicts = new int[K];
+        for (int i = 0; i < edges.length; i++) {
+            if ((edges[i][0]==chosenIndex)) {
+                tempConflicts[color[edges[i][1]]]++;
+            } else if (edges[i][1]==chosenIndex) {
+                tempConflicts[color[edges[i][0]]]++;
+            }
+        }
+        for (int i = 0; i < K; i++) {
+            if (tempConflicts[i] < min) {
+                min = tempConflicts[i];
+            }
+        }
+        for (int i = 0; i < K; i++) {
+            if(tempConflicts[i] == min) {
+                list.add(i);
+            }
+        }
+        if (list.contains(color[chosenIndex])&&(list.size()!=1)) {
+            list.remove(list.indexOf(color[chosenIndex]));
+        }
+        return list;
+    }
+
+    @Override
+    public void change(int chosenIndex, int chosenNeighbour) {
+        color[chosenIndex] = chosenNeighbour;
     }
 }
