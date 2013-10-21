@@ -49,18 +49,6 @@ public class FutoshikiState extends AbstractState {
 
     @Override
     public List<Integer> conflictedStates() {
-        List<Integer> list = new ArrayList<Integer>();
-        for (int i = 0; i < rows; i++) {
-            boolean [] seen = new boolean[rows];
-            for (int j = 0; j < rows; j++) {
-                if (seen[positions[i][j]] == true) {
-                    return false;
-                } else {
-                    seen[positions[i][j]] = true;
-                }
-            }
-        }
-        return list;
     }
 
     @Override
