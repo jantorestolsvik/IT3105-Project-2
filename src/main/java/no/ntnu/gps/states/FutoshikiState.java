@@ -4,6 +4,7 @@
  */
 package no.ntnu.gps.states;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -12,37 +13,29 @@ import java.util.List;
  */
 public class FutoshikiState extends AbstractState {
    
-    private int board[];
+    private int positions[][];
     private int [][] smallerThanOperators;
     private int rows;
     public FutoshikiState(int rows) {
-        board = new int[rows*rows];
-        smallerThanOperators = new int [10][2];
+        positions = new int[rows][rows];
+        smallerThanOperators = new int [0][2];
         this.rows = rows;
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < rows; j++) {
+                positions[i][j] = j;
+            }
+        }
     }
 
     @Override
     public boolean solved() {
-        for (int i = 0; i < smallerThanOperators.length; i++) {
-            if (smallerThanOperators[i][0] > smallerThanOperators[i][1]) {
-                return false;
-            }
-        }
         for (int i = 0; i < rows; i++) {
-            boolean []seenRow = new boolean[rows];
+            boolean [] seen = new boolean[rows];
             for (int j = 0; j < rows; j++) {
-                if (seenRow[board[i*rows + j]] == true) {
+                if (seen[positions[i][j]] == true) {
                     return false;
                 } else {
-                    seenRow[board[i*rows + j]] = true;
-                }
-            }
-            boolean []seenCol = new boolean[rows];
-            for (int j = 0; j < rows; j++) {
-                if (seenCol[board[i + j*rows]] == true) {
-                    return false;
-                } else {
-                    seenCol[board[i + j*rows]] = true;
+                    seen[positions[i][j]] = true;
                 }
             }
         }
@@ -56,7 +49,9 @@ public class FutoshikiState extends AbstractState {
 
     @Override
     public List<Integer> conflictedStates() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        List<Integer> list = new ArrayList<Integer>();
+        
+        return list;
     }
 
     @Override
