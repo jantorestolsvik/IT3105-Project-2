@@ -10,7 +10,7 @@ import no.ntnu.gps.states.*;
  * @author Jan Tore Stølsvik & Tom Glover 
  */
 public class App 
-{
+{   
     public static void main( String[] args )
     {
     	int nrOfRuns = 1;
@@ -31,7 +31,7 @@ public class App
                 state = new GraphColorState("graph" + scanner.nextInt() + ".txt", 4);
                 break;
             default:
-                throw new UnknownError("No such input");
+                throw new IllegalArgumentException("No such input");
         }
         StateManager stateManager = new StateManager(state);
         System.out.println("Which algorithm do you which to use?");
@@ -46,7 +46,7 @@ public class App
                 localSearch = new SimulatedAnnealing(stateManager);
                 break;
             default:
-                throw new UnknownError("No such input");
+                throw new IllegalArgumentException("No such input");
         }
         
         AbstractState result = localSearch.solve();
