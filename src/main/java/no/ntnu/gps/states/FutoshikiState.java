@@ -13,16 +13,16 @@ import java.util.List;
  */
 public class FutoshikiState extends AbstractState {
    
-    private int positions[][];
+    private int board[];
     private int [][] smallerThanOperators;
     private int rows;
     public FutoshikiState(int rows) {
-        positions = new int[rows][rows];
+        board = new int[rows*rows];
         smallerThanOperators = new int [0][2];
         this.rows = rows;
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < rows; j++) {
-                positions[i][j] = j;
+                board[i*rows+j] = j;
             }
         }
     }
@@ -32,10 +32,10 @@ public class FutoshikiState extends AbstractState {
         for (int i = 0; i < rows; i++) {
             boolean [] seen = new boolean[rows];
             for (int j = 0; j < rows; j++) {
-                if (seen[positions[i][j]] == true) {
+                if (seen[board[i+rows*j]] == true) {
                     return false;
                 } else {
-                    seen[positions[i][j]] = true;
+                    seen[board[i+rows*j]] = true;
                 }
             }
         }
@@ -50,7 +50,16 @@ public class FutoshikiState extends AbstractState {
     @Override
     public List<Integer> conflictedStates() {
         List<Integer> list = new ArrayList<Integer>();
-        
+        for (int i = 0; i < rows; i++) {
+            boolean [] seen = new boolean[rows];
+            for (int j = 0; j < rows; j++) {
+                if (seen[positions[i][j]] == true) {
+                    return false;
+                } else {
+                    seen[positions[i][j]] = true;
+                }
+            }
+        }
         return list;
     }
 
