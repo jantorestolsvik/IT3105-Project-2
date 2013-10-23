@@ -30,6 +30,10 @@ public class App
                 System.out.println("Which file? 1, 2 or 3");
                 state = new GraphColorState("graph" + scanner.nextInt() + ".txt", 4);
                 break;
+            case 3:
+            	  System.out.println("How big in rows? 1-9");
+            	state = new FutoshikiState(scanner.nextInt());
+            	break;
             default:
                 throw new IllegalArgumentException("No such input");
         }
