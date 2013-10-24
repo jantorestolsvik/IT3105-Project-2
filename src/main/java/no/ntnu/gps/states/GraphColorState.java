@@ -45,7 +45,7 @@ import org.apache.commons.collections15.TransformerUtils;
 
 /**
  *
- * @author Jani
+ * @author Jan Tore Stølsvik & Tom Glover 
  */
 public class GraphColorState extends AbstractState {
     private int [][] edges;

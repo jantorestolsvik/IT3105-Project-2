@@ -11,7 +11,7 @@ import javax.swing.text.ChangedCharSetException;
 
 /**
  *
- * @author Jani
+ * @author Jan Tore Stølsvik & Tom Glover 
  */
 public class FutoshikiState extends AbstractState {
 	private int conflikts [][];

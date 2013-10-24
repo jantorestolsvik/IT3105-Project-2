@@ -9,7 +9,7 @@ import java.util.List;
 
 /**
  *
- * @author Jani
+ * @author Jan Tore Stølsvik & Tom Glover 
  */
 public class KQueenState extends AbstractState {
 	private int [] conflicts;

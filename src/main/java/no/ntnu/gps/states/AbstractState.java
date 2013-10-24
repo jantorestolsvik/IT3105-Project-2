@@ -8,7 +8,7 @@ import java.util.List;
 
 /**
  *
- * @author Jani
+ * @author Jan Tore Stølsvik & Tom Glover 
  */
 public abstract class AbstractState {
 
