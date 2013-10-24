@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import no.ntnu.gps.statemanagers.StateManager;
 import no.ntnu.gps.states.AbstractState;
+import no.ntnu.gps.states.KQueenState;
 
 /**
  *
@@ -12,7 +13,8 @@ import no.ntnu.gps.states.AbstractState;
 public class SimulatedAnnealing extends ConstraintBasedLocalSearch {
 	protected double tempreture = 100;
 	protected int nrOfNeigboors = 40;
-	protected int time= 0;
+	protected int bestOfRun = 0;
+//	protected int time= 0;
 	protected int maxIterations = 100000;
 	protected ArrayList<AbstractState> neighboors;
 	private AbstractState bestNeightbour;
@@ -31,6 +33,9 @@ public class SimulatedAnnealing extends ConstraintBasedLocalSearch {
 					bestNeightbour = neighboors.get(0);
 				}
 			}
+			if(bestNeightbour.evaluation()>bestOfRun){
+				bestOfRun = bestNeightbour.evaluation();
+			}
 			double q = ((double)bestNeightbour.evaluation() - (double)stateManager.getState().evaluation() )/(double)stateManager.getState().evaluation();
 			double p = Math.exp(-q/(double)tempreture);
 			if(p>1){
@@ -44,7 +49,7 @@ public class SimulatedAnnealing extends ConstraintBasedLocalSearch {
 				state = bestNeightbour;
 			}
 				
-			tempreture /=1.001;
+			tempreture /=1.0001;
 			maxIterations--;
 		}
 		return state;
@@ -54,6 +59,25 @@ public class SimulatedAnnealing extends ConstraintBasedLocalSearch {
 		super(stateManager);
 	}
 
+	public static void main(String[] args) {
+        int nrOfRuns = 20;
+    	int nrOfSolved = 0;
+        int [] eval = new int [nrOfRuns];	
+        int [] steps = new int [nrOfRuns];
+    	for (int i = 0; i < nrOfRuns; i++) {
+    		ConstraintBasedLocalSearch temp = new SimulatedAnnealing(new StateManager(new KQueenState(1000)));
+    		AbstractState result = temp.solve();
+    		eval [i] = ((SimulatedAnnealing)temp).bestOfRun;
+    		steps[i] = 100000 - ((SimulatedAnnealing)temp).maxIterations;
+			if(result.solved()){
+				nrOfSolved++;
+			}
+		}
+    	System.out.println(nrOfSolved + "/" + nrOfRuns);/**/
+    	for (int i = 0; i < steps.length; i++) {
+			System.out.println("id:" + i + " eval:" + eval[i] + " steps:" + steps[i]);
+		}
+	}
 
 
 }

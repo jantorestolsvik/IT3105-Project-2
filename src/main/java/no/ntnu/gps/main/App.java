@@ -13,8 +13,7 @@ public class App
 {   
     public static void main( String[] args )
     {
-    	int nrOfRuns = 1;
-    	int nrOfSolved = 0;
+   // /*
         Scanner scanner = new Scanner(System.in);
         System.out.println("Which puzzle do you want to solve?");
         System.out.println("1:Kqueens");
@@ -60,14 +59,18 @@ public class App
         } else {
             System.out.println("Not solved!");
         }
-       
-    	/*for (int i = 0; i < nrOfRuns; i++) {
+       /*
+        int nrOfRuns = 1;
+    	int nrOfSolved = 0;
+        int [] eval = new int [nrOfRuns];	
+        int [] steps = new int [nrOfRuns];
+    	for (int i = 0; i < nrOfRuns; i++) {
     		ConstraintBasedLocalSearch temp = new MinConflicts(new StateManager(new KQueenState(100)));
     		AbstractState result = temp.solve();
 			if(result.solved()){
 				nrOfSolved++;
 			}
 		}
-    	System.out.println(nrOfSolved + "/" + nrOfRuns);*/
+    	System.out.println(nrOfSolved + "/" + nrOfRuns);/**/
     }
 }
