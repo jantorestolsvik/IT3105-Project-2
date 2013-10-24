@@ -38,7 +38,7 @@ public class MinConflicts extends ConstraintBasedLocalSearch {
         int [] eval = new int [nrOfRuns];	
         int [] steps = new int [nrOfRuns];
     	for (int i = 0; i < nrOfRuns; i++) {
-    		ConstraintBasedLocalSearch temp = new MinConflicts(new StateManager(new GraphColorState("graph1.txt",4)));
+    		ConstraintBasedLocalSearch temp = new MinConflicts(new StateManager(new GraphColorState("graph3.txt",4)));
     		AbstractState result = temp.solve();
     		eval [i] = ((MinConflicts)temp).bestOfRun;
     		steps[i] = ((MinConflicts)temp).i;

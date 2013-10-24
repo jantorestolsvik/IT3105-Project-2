@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import no.ntnu.gps.statemanagers.StateManager;
 import no.ntnu.gps.states.AbstractState;
+import no.ntnu.gps.states.GraphColorState;
 import no.ntnu.gps.states.KQueenState;
 
 /**
@@ -65,7 +66,7 @@ public class SimulatedAnnealing extends ConstraintBasedLocalSearch {
         int [] eval = new int [nrOfRuns];	
         int [] steps = new int [nrOfRuns];
     	for (int i = 0; i < nrOfRuns; i++) {
-    		ConstraintBasedLocalSearch temp = new SimulatedAnnealing(new StateManager(new KQueenState(1000)));
+    		ConstraintBasedLocalSearch temp = new SimulatedAnnealing(new StateManager(new GraphColorState("graph3.txt",4)));
     		AbstractState result = temp.solve();
     		eval [i] = ((SimulatedAnnealing)temp).bestOfRun;
     		steps[i] = 100000 - ((SimulatedAnnealing)temp).maxIterations;
@@ -74,10 +75,29 @@ public class SimulatedAnnealing extends ConstraintBasedLocalSearch {
 			}
 		}
     	System.out.println(nrOfSolved + "/" + nrOfRuns);/**/
+               double meanEval = 0;
+        double meanStep = 0;
+        double varianceEval = 0;
+        double varianceStep = 0;
     	for (int i = 0; i < steps.length; i++) {
 			System.out.println("id:" + i + " eval:" + eval[i] + " steps:" + steps[i]);
-		}
-	}
-
+                        meanEval += eval[i];
+                        meanStep += steps[i];
+            }
+        meanEval /= steps.length;
+        meanStep /= steps.length;
+            for (int i = 0; i < steps.length; i++) {
+                varianceEval += ((eval[i]-meanEval)*(eval[i]-meanEval));
+                varianceStep += ((steps[i]-meanStep)*(steps[i]-meanStep));
+            }
+        varianceEval /= steps.length;
+        varianceStep /= steps.length;
+        double SDEval = Math.sqrt(varianceEval);
+        double SDStep = Math.sqrt(varianceStep);
+            System.out.println("Eval mean: " + meanEval);
+            System.out.println("Step mean: " + meanStep);
+            System.out.println("Eval SD: " + SDEval);
+            System.out.println("Step SD: " + SDStep);
+        }
 
 }
