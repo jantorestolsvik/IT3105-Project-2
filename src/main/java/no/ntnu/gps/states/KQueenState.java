@@ -4,8 +4,17 @@
  */
 package no.ntnu.gps.states;
 
+import java.awt.Color;
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.awt.image.WritableRaster;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 /**
  *
@@ -161,7 +170,23 @@ public class KQueenState extends AbstractState {
 
 	@Override
 	public void display() {
-		System.out.println(this.toString());
-	}
-
+            BufferedImage image = new BufferedImage(k, k, BufferedImage.TYPE_INT_RGB);
+            for (int i = 0; i < k; i++) {
+			for (int j = 0; j < k; j++) {
+				if (queens[i]==j) {
+					image.setRGB(i, j, Color.BLACK.getRGB());
+				} else {
+					image.setRGB(i, j, Color.WHITE.getRGB());
+				}
+			}
+		}
+            JFrame jframe = new JFrame("wut");
+            JLabel jlabel = new JLabel(new ImageIcon(image));
+            jframe.getContentPane().add(jlabel);
+            jframe.pack();
+            jframe.setVisible(true);
+            
+            
+            //System.out.println(this.toString());        
+        }
 }
